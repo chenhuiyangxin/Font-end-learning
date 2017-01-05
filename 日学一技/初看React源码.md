@@ -31,3 +31,23 @@ function instantiateReactComponent(node) {
 }
 ```
 
+然后在render方法中创建实例
+
+```javascript
+React = {
+    nextReactRootIndex: 0,
+    render: function(element,container) {
+    	//创建component实例
+        var componentInstance = instantiateReactComponent(element);
+        var markup = componentInstance.mountComponent(React.nextReactRootIndex++);
+        $(container).html(markup);
+        $(document).trigger('mountReady')
+    }
+}
+```
+
+可以看到mountComponent()这个方法，这是用来渲染DOM结构的
+
+
+
+
