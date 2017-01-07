@@ -112,6 +112,8 @@ ReactCompositeComponent.prototype.mountComponent = function(rootID) {
 
 文本节点没啥说的，包了层span标签就直接渲染了   
 浏览器节点，先把属性渲染，然后递归的对子节点进行渲染，最后都拼凑起来渲染出来    
-自定义节点本质上也是递归渲染出来的
+自定义节点本质上也是递归渲染出来的   
+
+#### 虚拟dom差异化算法（diff algorithm）
 
 
