@@ -61,3 +61,29 @@ div{
 ## 多列等高
 
 给父容器设`overflow: hidden;`每列设一个很大的`padding-bottom`以及值为它负值的`margin-bottom`
+
+## 字体设置的几个问题
+
+看下面一段代码
+
+```css
+html{
+    font-size: 62.5%;/*1*/
+}
+
+body{
+    font: 12px/1.5;/*2*/
+    font-size: 1.2rem;/*3*/
+}
+
+input,button,textarea,select,label {
+    font-size:100%;/*4*/
+}
+```
+
+1中，浏览器默认字体大小为16px，为了方便计算，将html中字体大小设为16 * 62.5%=10px   
+2中，字体大小设为12px，行高为字体大小的1.5倍   
+3中，1.2rem = 10px * 1.2 = 12px,rem是以根元素字体大小为基准的，比如`html{font-size: 20px}`，那么1rem = 20px     
+4中，浏览器默认设置表单字体默认比文本小，这里把默认样式覆盖掉
+
+其次要注意em，%这两个单位，都是不固定的，继承父级元素的字体大小，例如父元素字体大小为20px，那么1em = 20px,100% = 20px
