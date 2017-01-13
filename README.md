@@ -22,3 +22,7 @@
 * [精华](./读书笔记/javascript语言精粹/精华.md)
 * [对象](./读书笔记/javascript语言精粹/对象.md)
 * [函数](./读书笔记/javascript语言精粹/函数.md)
+
+### 你不知道的JavaScript上卷
+
+* [作用域是什么](./读书笔记/你不知道的JavaScript上卷/作用域是什么.md)
