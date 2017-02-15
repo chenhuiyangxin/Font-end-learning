@@ -23,6 +23,7 @@
 * [精华](./读书笔记/javascript语言精粹/精华.md)
 * [对象](./读书笔记/javascript语言精粹/对象.md)
 * [函数](./读书笔记/javascript语言精粹/函数.md)
+* [毒瘤](./读书笔记/javascript语言精粹/毒瘤.md)
 
 ### 你不知道的JavaScript上卷
 
