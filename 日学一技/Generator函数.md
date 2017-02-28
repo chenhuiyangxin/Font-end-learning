@@ -35,6 +35,37 @@ var readFileThunk = Thunk(fs.readfile);
 readFileThunk(fileName)(callback);
 ```
 
+### 自动流程管理
+
+讲了这么多Thunk函数是干嘛的呢？  
+我们发现将callback函数传入Thunk函数后，它才会去执行fn，执行callback   
+Generator函数每次都需要调用next方法后才会继续执行下面的yield语句   
+所以只要每次next方法返回的value属性的值是一个Thunk函数，给它传入callback，并在callback中继续调用   
+next方法，就实现了自动管理异步操作了
+
+```javascript
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
