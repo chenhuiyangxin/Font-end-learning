@@ -44,7 +44,20 @@ Generator函数每次都需要调用next方法后才会继续执行下面的yiel
 next方法，就实现了自动管理异步操作了
 
 ```javascript
+function run (fn) {
+	var gen = fn();
 
+	function next(data) {
+		var result = gen.next();
+		if(result.done) return;
+		result.value(next);
+	}
+
+	next();
+}
+
+run(gen);
+```
 
 
 
