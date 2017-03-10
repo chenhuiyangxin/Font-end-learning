@@ -59,6 +59,10 @@ function run (fn) {
 run(gen);
 ```
 
+### 另一种实现方法
+
+上面讲了用Thunk函数实现自动流程管理，我们可以想到，用Promise也可以实现这种效果
+
 
 
 
