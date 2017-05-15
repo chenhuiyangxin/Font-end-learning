@@ -12,6 +12,8 @@
 * [Flex布局](./日学一技/Flex布局.md)
 * [异步编程的方法](./日学一技/异步编程的方法.md)
 * [Generator函数](./日学一技/Generator函数.md)
+* [webpack实践](./日学一技/webpack实践.md)
+
 
 ## 读书笔记
 
