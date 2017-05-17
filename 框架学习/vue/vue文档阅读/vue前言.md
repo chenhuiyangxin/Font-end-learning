@@ -42,7 +42,7 @@ var app = new Vue({
             {text: '呵呵'}
         ]
     }
-})；
+});
 ```
 ```html
 <div id="app">
@@ -52,4 +52,35 @@ var app = new Vue({
 </div>
 ```
 
-其实不说这是vue，有点基础的同学也能看出来这段代码干了什么，/c/Users/viruser.v-desktop/.ssh/id_rsa
+其实不说这是vue，有点基础的同学也能看出来这段代码干了什么，通过v-for循环生成几个todo-item标签，然后绑定一个   
+todo属性给他，其实就是通过这种方法将父组件的变量传递进了子组件。vue就是这个清晰明了，也是声明式渲染的优势
+
+### 路由
+
+传统的路由都是服务器根据一定的url匹配规则返回不同的页面代码。前端也可以使用锚点路由实现简单路由，且不需要刷新页面    
+我们可以先看下路由是怎么配置的，原理以后再看
+
+```javascript
+import Vue from 'vue'
+import Router from 'vue-router'
+import Hello from '@/components/Hello'
+import World from '@/components/World'
+
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'Hello',
+      component: Hello
+},
+    {
+      path: '/World',
+      name: 'World',
+      component: World
+}
+  ]
+})
+```
