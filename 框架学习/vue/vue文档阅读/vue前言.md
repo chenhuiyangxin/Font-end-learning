@@ -84,3 +84,11 @@ export default new Router({
   ]
 })
 ```
+
+一目了然，根据不同的path分配不同的页面或者组件，这样子其实就完成了路由的配置，简单明了
+
+### 总结
+
+我们拿一个网上找来的流程图总结下Vue的页面架构流程
+
+![](..../static/img/vueProgress.png)   
