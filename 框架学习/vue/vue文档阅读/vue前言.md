@@ -89,6 +89,5 @@ export default new Router({
 
 ### 总结
 
-我们拿一个网上找来的流程图总结下Vue的页面架构流程
-
-![](Font-end-learning/static/img/vueProgress.png)   
+我们拿一个网上找来的流程图总结下Vue的页面架构流程       
+![](/static/img/vueProgress.png)   
