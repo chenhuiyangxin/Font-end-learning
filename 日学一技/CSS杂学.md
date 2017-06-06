@@ -87,3 +87,18 @@ input,button,textarea,select,label {
 4中，浏览器默认设置表单字体默认比文本小，这里把默认样式覆盖掉
 
 其次要注意em，%这两个单位，都是不固定的，继承父级元素的字体大小，例如父元素字体大小为20px，那么1em = 20px,100% = 20px
+
+## 渐变背景效果
+
+```css
+body{
+    background: linear-gradient(to top right,rgb(249,147,12),rgb(252,97,21));
+    background: -webkit-linear-gradient(left bottom,rgb(249,147,12),rgb(252,97,21));
+    background: -o-linear-gradient(top right,rgb(249,147,12),rgb(252,97,21));
+    background: -moz-linear-gradient(top right,rgb(249,147,12),rgb(252,97,21));
+}
+```
+不同浏览器有细微的差别，`to top`就是指从底部开始到顶部，`bottom`也是指从底部开始到顶部
+
+## 换行问题
+
