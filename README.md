@@ -46,7 +46,9 @@
 
 * [vue前言](./框架学习/vue/vue文档阅读/vue前言.md)
 * [Vue实例及模板语法](./框架学习/vue/vue文档阅读/Vue实例及模板语法.md)
+* [class与style绑定](./框架学习/vue/vue文档阅读/class与style绑定.md)
 
 #### vue踩坑之旅
 
 * [实例容器](./框架学习/vue/vue踩坑之旅/实例容器.md)
+* [模块组件](./框架学习/vue/vue踩坑之旅/模块组件.md)
