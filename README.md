@@ -47,6 +47,7 @@
 * [vue前言](./框架学习/vue/vue文档阅读/vue前言.md)
 * [Vue实例及模板语法](./框架学习/vue/vue文档阅读/Vue实例及模板语法.md)
 * [class与style绑定](./框架学习/vue/vue文档阅读/class与style绑定.md)
+* [条件渲染](./框架学习/vue/vue文档阅读/条件渲染.md)
 
 #### vue踩坑之旅
 
