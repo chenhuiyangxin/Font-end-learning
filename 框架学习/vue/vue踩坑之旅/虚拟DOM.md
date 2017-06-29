@@ -12,7 +12,7 @@
 	Vue.component('child',{
 		props: ['text'],
 		template: '<div>{{text}}</div>'
-	})
+	});
 
 	var vm = new Vue({
 		el: '#app',
