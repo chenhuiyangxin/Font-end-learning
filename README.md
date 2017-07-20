@@ -13,6 +13,7 @@
 * [异步编程的方法](./日学一技/异步编程的方法.md)
 * [Generator函数](./日学一技/Generator函数.md)
 * [webpack实践](./日学一技/webpack实践.md)
+* [throttle与debounce函数](./日学一技/throttle与debounce函数.md)
 
 
 ## 读书笔记
