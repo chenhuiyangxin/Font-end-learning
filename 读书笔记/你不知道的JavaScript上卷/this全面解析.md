@@ -69,6 +69,45 @@ obj1.foo();//2
 严格来说foo函数并不属于obj1对象，调用位置会使用obj1上下文来引用函数，所以可以说函数被调用    
 时obj1“拥有”或者“包含”它
 
+##### 绑定丢失
+
+被隐式绑定的函数会丢失绑定对象，从而把this绑定到全局对象或者undefined上，如下代码
+
+```javascript
+function foo(){
+    console.log(this.a);
+}
+var obj = {
+    a:2,
+    foo:foo
+};
+var bar = obj.foo;
+var a = "i am global's a";
+bar(); // "i am global's a"
+```
+虽然`bar`是`obj.foo`的一个引用，但实际上它引用的是`foo`函数本身。还有一种更微妙、更出乎意料的情况
+
+```javascript
+function foo(){
+    console.log(this.a);
+}
+function doFoo(fn){
+    fn();
+}
+var obj = {
+    a:1,
+    foo:foo
+};
+var a = "i am global's a";
+doFoo(obj.foo); //"i am global's a"
+```
+这里发生绑定丢失的原因是，参数传递本身就是一种隐式赋值，所以结果跟上面赋值给一个全局变量一样的后果
+
+#### 显式绑定
+
+简单来说就是`call()`和`apply()`两个方法，他们第一个参数传入一个对象，用来显式的绑定this
+
+
 
 
 
