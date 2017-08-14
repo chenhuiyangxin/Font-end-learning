@@ -107,6 +107,29 @@ doFoo(obj.foo); //"i am global's a"
 
 简单来说就是`call()`和`apply()`两个方法，他们第一个参数传入一个对象，用来显式的绑定this
 
+##### 硬绑定
+
+我们直接看最后一种形态就行了
+
+```javascript
+function foo(something){
+    console.log(this.a,something);
+    return this.a + something;
+}
+function bind(fn,obj){
+    return function(){
+        return fn.apply(obj,arguments);
+    };
+}
+var obj = {
+    a:2
+};
+var baz = bind(foo,obj);
+var b = baz(3); //2 3
+console.log(b); //5
+```
+这其实就是bind函数，ES5已经将它作为了一个内置的方法
+
 
 
 
