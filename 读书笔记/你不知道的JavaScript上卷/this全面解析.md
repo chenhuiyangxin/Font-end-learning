@@ -176,6 +176,31 @@ obj2.foo.call(obj1); //1
 ```
 很明显看到显式绑定优先级要高于隐式绑定
 
+再看下隐式绑定跟new绑定那个优先级更高
+
+```javascript
+function foo(something){
+    this.a = something;
+}
+var obj1 = {
+    foo:foo
+};
+var obj2 = {};
+
+obj1.foo(2);
+console.log(obj1.a); //2
+
+obj1.foo.call(obj2,3);
+console.log(obj2.a); //3
+
+var bar = new obj1.foo(4);
+console.log(obj1.a); //2
+console.log(bar.a); //4
+```
+我们可以看到new绑定的优先级是比隐式绑定高的
+
+那么，new绑定跟显式绑定哪个优先级高呢？
+
 
 
 
