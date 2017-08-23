@@ -201,6 +201,64 @@ console.log(bar.a); //4
 
 那么，new绑定跟显式绑定哪个优先级高呢？
 
+```javascript
+function foo(something){
+    this.a = something;
+};
+
+var obj1 = {};
+var bar = foo.bind(obj1);
+bar(2);
+console.log(obj1.a); // 2
+
+var baz = new bar(3);
+console.log(obj1.a); // 2
+console.log(baz.a); // 3
+```
+
+结果出乎意料，`new bar(3)`并没有像我们预计的那样将`obj1.a`修改为3
+
+通过bind的实现我们知道，它先会判断硬绑定函数是否被new调用，如果是的话就会使用新创建的this替换硬绑定的this
+
+我们之所以要在new中使用硬绑定函数，主要目的就是预先设置函数的一些参数，比如像这样
+
+```javascript
+function foo(p1,p2){
+    this.val = p1 + p2;
+};
+
+var bar = foo.bind(null,"p1");
+var baz = new bar("p2");
+console.log(baz.val); // p1p2
+```
+
+#### 判断this
+
+现在我们可以通过优先级来判断函数在某个调用位置应用的是哪一条规则了
+
+1. 函数是否在new中调用（new绑定）？如果是this绑定的就是创建的新对象
+2. 函数是否通过call,apply（显式绑定）或者硬绑定调用？如果是，this绑定的就是指定的对象
+3. 函数是否在某个上下文对象中调用（隐式绑定）？如果是，this绑定是那个上下文对象
+4. 如果都不是，使用默认绑定。如果在严格模式下，绑定到undefined，否则就绑定到全局对象
+
+#### 绑定例外
+
+某些场景下this的绑定实际上可能应用的是默认绑定
+
+##### 被忽略的this
+
+如果你把undefined或者null作为this的绑定对象传入call,apply或者bind，这些值在调用是会被忽略，实际应用的是默认绑定
+
+```javascript
+function foo(){
+    console.log(this.a);
+}
+var a = 2;
+foo.call(null); // 2
+```
+那我们什么时候需要传null呢？   
+当我们需要用apply展开一个数组的时候，我们不希望指定this绑定的对象，这时传一个null就行了
+
 
 
 
