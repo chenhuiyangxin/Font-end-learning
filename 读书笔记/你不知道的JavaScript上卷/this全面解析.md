@@ -257,7 +257,54 @@ var a = 2;
 foo.call(null); // 2
 ```
 那我们什么时候需要传null呢？   
-当我们需要用apply展开一个数组的时候，我们不希望指定this绑定的对象，这时传一个null就行了
+当我们需要用apply展开一个数组的时候，我们不希望指定this绑定的对象，这时传一个null就行了，还有就是用bind()对参数进行柯里化时
+
+```javascript
+function foo(a,b){
+    console.log("a:" + a,"b:" + b);
+}
+//把数组“展开”成参数
+foo.apply(null,[1,2]); //a:1,b:3
+//bind柯里化
+var bar = foo.bind(null,1);
+bar(2); //a:1,b:2
+```
+这样做可能产生一些副作用，如果某个函数确实使用了this，那么这样做就会绑定到全局对象，导致一些不可预计的后果
+
+##### 更安全的this
+
+更安全的做法就是传入一个特殊的对象，把this绑定到这个对象不会产生任何副作用    
+我们可以创建一个“DMZ”（demilitarized,非军事区）对象--它就是一个空的非委托对象
+
+在JavaScript中创建一个空对象最简单的方法就是`Object.create(null)`，它与{}很像，但是它不会创建`Object.prototype`    
+这个委托，所以它比{}更空
+
+#### 间接引用
+
+在这种情况下，调用这个函数将会应用默认绑定
+
+```javascript
+function foo(){
+    console.log(this.a);
+}
+var a = 2;
+var obj1 = {
+    a: 3,
+    foo: foo
+};
+var obj2 = {
+    a: 4
+};
+obj1.foo();//3
+(obj2.foo = obj1.foo)();//2
+```
+可以看到在赋值之后，this绑定到了全局对象上    
+
+值得注意的是this绑定到全局对象还是undefined，不是取决于调用位置是否是严格模式，而是函数体是否是严格模式
+
+#### 软绑定
+
+
 
 
 
