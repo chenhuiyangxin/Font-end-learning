@@ -308,6 +308,33 @@ obj1.foo();//3
 
 如果可以给默认绑定指定一个全局对象和undefined以外的值，那就可以实现和硬绑定相同的效果，同时保留隐式绑定或者显示绑定修改this的能力
 
+具体实现
+
+```javascript
+if(!Function.prototype.softBind){
+    Function.prototype.softBind = function(obj){
+        var fn = this;
+        // 捕获所有的curried参数
+        var curried = [].slice.call(arguments,1);
+        var bound = function(){
+            return fn.apply(
+                (!this || this === (window || global)) ? obj : this,
+                curried.concat.apply(curried,arguments)
+            );
+        };
+        bound.prototype = Object.create(fn.prototype);
+        return bound;
+    };
+}
+```
+除了软绑定，它和内置的bind方法原理类似。     
+它会对指定函数进行封装，首先检查调用时的this，如果绑定到全局对象或者undefined，那就把指定的默认对象obj绑定到this，否则不会修改this
+
+### this词法
+
+之前讲的四条规则可以包含所有正常的函数，但是在ES6中介绍了一种无法使用这些规则的特殊函数类型：箭头函数    
+箭头函数不使用this的四种标准规则，而是根据外层（函数或者全局）作用域来决定this
+
 
 
 
