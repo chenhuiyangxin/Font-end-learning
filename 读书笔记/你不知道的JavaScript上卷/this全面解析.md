@@ -335,6 +335,23 @@ if(!Function.prototype.softBind){
 之前讲的四条规则可以包含所有正常的函数，但是在ES6中介绍了一种无法使用这些规则的特殊函数类型：箭头函数    
 箭头函数不使用this的四种标准规则，而是根据外层（函数或者全局）作用域来决定this
 
+```javascript
+function foo(){
+    return (a) => {
+        console.log(this.a)
+    };
+}
+var obj1 = {
+    a: 2
+};
+var obj2 = {
+    a: 3
+};
+var bar = foo.call(obj1);
+bar.call(obj2); //2，不是3
+```
+
+foo()内部的箭头函数会捕获调用foo时的this。由于foo()的this绑定到obj1，bar的this也会绑定到obj1，箭头函数的绑定无法被修改（new也不行）
 
 
 
