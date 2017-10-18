@@ -40,6 +40,7 @@
 * [作用域闭包](./读书笔记/你不知道的JavaScript上卷/作用域闭包.md)
 * [关于this](./读书笔记/你不知道的JavaScript上卷/关于this.md)
 * [this全面解析](./读书笔记/你不知道的JavaScript上卷/this全面解析.md)
+* [对象](./读书笔记/你不知道的JavaScript上卷/对象.md)
 
 ## 框架学习
 
