@@ -112,3 +112,10 @@ div{
 `white-space`默认值是`normal`，块级元素定宽之后会自动换行，但是在移动端可能出现预料之外的自动换行，导致布局错乱，要加上这一句   
 `word-break:break-all`这种情况，如果行尾是一个长单词，它会把单词拆成两半，强行换行，而`word-wrap:break-word`会把最后那个单词都换到下一行 
 
+## 隐藏滚动条同时也能滚动
+
+自定义滚动条的为对象选择器`::-webkit-scrollbar`
+```css
+.element::-webkit-scrollbar {display:none}
+```
+
