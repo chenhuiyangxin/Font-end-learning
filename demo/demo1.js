@@ -3,7 +3,11 @@
 * */
 // 收取现金抽象类，传参是原价，返回值是应付价格
 class CashIn {
-    constructor(money){
+    constructor(){
+        this.money = null;
+    }
+
+    accept(money){
         this.money = money;
     }
 
@@ -14,16 +18,16 @@ class CashIn {
 
 // 正常收费子类
 class CashNormal extends CashIn{
-    constructor(money){
-        super(money);
+    constructor(){
+        super();
     }
 
 }
 
 // 打折类
 class CashDiscount extends CashIn{
-    constructor(money,discount){
-        super(money);
+    constructor(discount){
+        super();
         this.discount = discount;
         this.doDiscount();
     }
@@ -37,6 +41,7 @@ class CashFactory {
     constructor(type){
         this.type = type;
         this.cashMethod = null;
+        this.switchType();
     }
 
     switchType(){
@@ -44,15 +49,33 @@ class CashFactory {
             case '正常收费':
                 this.cashMethod = new CashNormal();
                 break;
-            case '打折':
-                
+            case '打5折':
+                this.cashMethod = new CashDiscount(5);
+                break;
         }
-    }
 
+    }
+}
+
+// 根据用户交互使用
+let cashier = new CashFactory(document.getElementById("select").value);
+cashier.cashMethod.accept(document.getElementById("moneyInput").value);
+cashier.cashMethod.pay();
+
+/*
+* 策略模式结合简单工厂模式
+* */
+class cashContext {
+    constructor(type){
+        this.cashfactory = new CashFactory(type);
+    }
+    getResult(money){
+        this.cashfactory.cashMethod.accept(money);
+        return this.cashfactory.cashMethod.pay();
+    }
 
 }
 
-
-
-let cash = new CashDiscount(12,0.75);
-cash.pay();
+// 用户使用
+let cashier2 = new cashContext(document.getElementById("select").value);
+cashier2.getResult(document.getElementById("moneyInput").value);
