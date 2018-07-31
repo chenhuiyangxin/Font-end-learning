@@ -11,8 +11,8 @@ class Person {
 }
 
 class Decorate extends Person {
-    constructor(name){
-        super(name);
+    constructor(){
+        super();
         this._show = null;
         this.instance =  null;
     }
@@ -30,8 +30,8 @@ class Decorate extends Person {
 }
 
 class BigCha extends Decorate {
-    constructor(name){
-        super(name);
+    constructor(){
+        super();
     }
     show(){
         this.Show();
@@ -40,8 +40,8 @@ class BigCha extends Decorate {
 }
 
 class Tie extends Decorate {
-    constructor(name){
-        super(name);
+    constructor(){
+        super();
     }
     show(){
         this.Show();
