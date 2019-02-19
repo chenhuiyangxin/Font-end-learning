@@ -72,4 +72,5 @@
 
 ## Hybird app开发经验
 * [性能之DOM回收机制](./Hybird-app开发经验/性能之DOM回收机制.md)
+* [如何与客户端通信](./Hybird-app开发经验/如何与客户端通信.md)
 
